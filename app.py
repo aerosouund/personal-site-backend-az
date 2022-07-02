@@ -46,8 +46,8 @@ def get_degrees():
 
 
 @app.route('/skills')
-def get_degrees():
-    ''' Get all formal education from the database '''
+def get_skills():
+    ''' Get all skills from the database '''
     response = jsonify(list(container.query_items(
         query='SELECT * FROM resume_data d WHERE d.type = @type',
         parameters=[
@@ -60,8 +60,8 @@ def get_degrees():
 
 
 @app.route('/courses')
-def get_degrees():
-    ''' Get all formal education from the database '''
+def get_courses():
+    ''' Get all informal education from the database '''
     response = jsonify(list(container.query_items(
         query='SELECT * FROM resume_data d WHERE d.type = @type',
         parameters=[
