@@ -45,5 +45,33 @@ def get_degrees():
     return response
 
 
+@app.route('/skills')
+def get_degrees():
+    ''' Get all formal education from the database '''
+    response = jsonify(list(container.query_items(
+        query='SELECT * FROM resume_data d WHERE d.type = @type',
+        parameters=[
+            dict(name='@type', value='skill')
+        ],
+        enable_cross_partition_query=True
+    )))
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
+
+@app.route('/courses')
+def get_degrees():
+    ''' Get all formal education from the database '''
+    response = jsonify(list(container.query_items(
+        query='SELECT * FROM resume_data d WHERE d.type = @type',
+        parameters=[
+            dict(name='@type', value='course')
+        ],
+        enable_cross_partition_query=True
+    )))
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
+
 if __name__ == '__main__':
     app.run()
